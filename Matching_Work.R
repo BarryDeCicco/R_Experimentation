@@ -15,11 +15,12 @@ Month_Year <- seq(ymd('2020-01-01'),ymd('2020-12-31'),by='month')
 View(Month_Year)
 
 
-df1 <- as.data.frame(cbind(Months, Volume))
+df1 <- as.data.frame(cbind(format(as.Date(Month_Year),"%Y-%m-%d"), Volume))
 View(df1)
 
 Case_Count <- c(runif(24,1,99))
-View(Case_Count)
+Level_of_Care <- c(rep("ICU",12),rep("Acute",12))
+
 df2 <- as.data.frame(cbind(Months, Case_Count))
 View(df2)
 
