@@ -1,6 +1,6 @@
 ####    Load Libraries    ####
 
-
+library(lubridate)
 library(magrittr)
 library(sqldf)
 library(tidyverse)
@@ -10,6 +10,10 @@ Months <- month.name
 View(Months)
 Volume <-  c("a", "b", "c" ,"d" ,"e", "f", "g", "h", "i", "j" ,"k", "l")
 View(Volume)
+
+Month_Year <- seq(ymd('2020-01-01'),ymd('2020-12-31'),by='month')
+View(Month_Year)
+
 
 df1 <- as.data.frame(cbind(Months, Volume))
 View(df1)
@@ -63,4 +67,10 @@ merge_all_x_df <- merge(df1, df2, by="Months", all.x = TRUE)
 View(merge_all_x_df)
 
 
+####   Simple expansion              ####
 
+
+  
+####   Grid expansion                          ####
+
+                            
