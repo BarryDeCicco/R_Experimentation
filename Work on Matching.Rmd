@@ -26,20 +26,30 @@ but logical problems which can happen.
 
 * Monthly Patient Volume.
 * Monthly Case Counts, by Level of Care.
-  * Delete October's data from Case Counts - there were no cases in that month.
+  * Delete June's data from Case Counts - there were no cases in that month.
 
 
 ```{r set-up-data}
 
+Months <- month.name
+View(Months)
+
 Volume <-  c("a", "b", "c" ,"d" ,"e", "f", "g", "h", "i", "j" ,"k", "l")
 View(Volume)
 
-df1 <- as.data.frame(cbind(Months, Volume))
-View(df1)
-
 Case_Count <- c(runif(24,1,99))
 View(Case_Count)
-df2 <- as.data.frame(cbind(Months, Case_Count))
+
+Level_of_Care <- c(rep("ICU",12),rep("Acute",12))
+View(Level_of_Care)
+
+
+df1 <- as.data.frame(cbind(Months,Volume))
+View(df1)
+
+
+
+df2 <- as.data.frame(cbind(Months, Level_of_Care,  Case_Count))
 View(df2)
 
 df2 <- df2 %>% 
@@ -50,12 +60,16 @@ View(df2)
 
 ```
 
-## Including Plots
+## Matching
 
-You can also embed plots, for example:
+Dplyr Left_Join
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r dplyr_left_join}
+
+left_join_dplyr_df <- dplyr::left_join(df1, df2, by = "Months" )
+View(left_join_dplyr_df)
+
+
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
